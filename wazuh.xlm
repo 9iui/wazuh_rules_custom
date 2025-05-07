@@ -30,3 +30,8 @@
     }
   }
 }
+
+
+$null = New-Item -Path "$env:SystemRoot\SystemTemp\_PSScriptPolicyTest_test.ps1" -ItemType File
+
+
