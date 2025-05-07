@@ -1,0 +1,15 @@
+<group name="sysmon,windows,">
+  <rule id="100100" level="10">
+    <if_sid>61601</if_sid> <!-- This is the default Wazuh rule for Sysmon Event ID 11 (file creation) -->
+    <field name="win.system.providerName">Microsoft-Windows-Sysmon</field>
+    <field name="win.system.eventID">11</field>
+    <match>Image.*powershell.exe</match>
+    <match>TargetFilename.*\\SystemTemp\\.*\.ps1</match>
+    <description>Suspicious PowerShell file created in SystemTemp - possible evasion technique.</description>
+    <mitre>
+      <id>T1059.001</id> <!-- PowerShell execution -->
+      <id>T1564.004</id> <!-- Hide artifacts: NTFS/Temp file usage -->
+    </mitre>
+    <group>powershell,suspicious,sysmon</group>
+  </rule>
+</group>
