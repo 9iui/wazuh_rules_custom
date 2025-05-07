@@ -13,3 +13,20 @@
     <group>powershell,suspicious,sysmon</group>
   </rule>
 </group>
+
+
+
+
+
+{
+  "win": {
+    "system": {
+      "eventID": 11,
+      "providerName": "Microsoft-Windows-Sysmon"
+    },
+    "eventdata": {
+      "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "TargetFilename": "C:\\Windows\\SystemTemp\\_PSScriptPolicyTest_test.ps1"
+    }
+  }
+}
