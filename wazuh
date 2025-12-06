@@ -1,0 +1,112 @@
+✅ Step 1 — Get the IP of Metasploitable 2
+
+On MSF2 machine:
+
+ifconfig
+
+
+Example output:
+
+inet addr:192.168.1.33
+
+
+Use this IP as the agent endpoint.
+
+✅ Step 2 — Install Wazuh Agent (Manually, since MSF2 is old)
+
+On Metasploitable 2, run:
+
+curl -sO https://packages.wazuh.com/4.x/apt/wazuh-agent_4.7.0-1_amd64.deb
+sudo dpkg -i wazuh-agent_4.7.0-1_amd64.deb
+
+
+If MSF2 complains about dependencies (because it's old Ubuntu), run this:
+
+sudo apt-get install libcap2 libssl1.0.0 libpcap0.8
+
+
+Then reinstall:
+
+sudo dpkg -i wazuh-agent*.deb
+
+✅ Step 3 — Set the Wazuh Manager IP
+
+Edit the agent configuration:
+
+sudo nano /var/ossec/etc/ossec.conf
+
+
+Find:
+
+<address>MANAGER_IP</address>
+
+
+Replace with your Wazuh Manager IP:
+
+<address>192.168.1.10</address>
+
+
+Save + exit.
+
+✅ Step 4 — Register the Agent with the Manager
+On the Wazuh Server
+
+Run:
+
+sudo /var/ossec/bin/manage_agents
+
+
+Follow the menu:
+
+1 → Add agent
+Enter name: metasploitable2
+Enter IP: <MSF2-IP>
+Group: default
+
+Then export the key:
+
+E
+
+
+Copy the long key.
+
+On Metasploitable 2
+
+Run:
+
+sudo /var/ossec/bin/agent-auth -m <WAZUH-MANAGER-IP> -p 1515
+
+
+OR if agent-auth cannot pull key (old SSL), use paste mode:
+
+sudo /var/ossec/bin/manage_agents
+
+
+Choose:
+
+I → Import key
+
+
+Paste the agent key from the manager.
+
+✅ Step 5 — Start the Agent
+sudo /var/ossec/bin/ossec-control start
+
+
+Check status:
+
+sudo /var/ossec/bin/ossec-control status
+
+🟢 Step 6 — Verify in Wazuh Dashboard
+
+Go to:
+
+https://<Wazuh-Server>:55000
+
+
+Check:
+Agents → Active Agents
+
+You should see:
+
+metasploitable2 – Active
