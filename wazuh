@@ -110,3 +110,11 @@ Agents → Active Agents
 You should see:
 
 metasploitable2 – Active
+
+
+
+
+scp -oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedAlgorithms=+ssh-rsa /tmp/wazuh-agent_4.7.0-1_amd64.deb msfadmin@10.10.10.50:/home/msfadmin/
+
+scp -oHostKeyAlgorithms=+ssh-dss -oPubkeyAcceptedAlgorithms=+ssh-dss /tmp/wazuh-agent_4.7.0-1_amd64.deb msfadmin@10.10.10.50:/home/msfadmin/
+
