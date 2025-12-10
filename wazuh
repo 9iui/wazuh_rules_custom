@@ -118,6 +118,16 @@ scp -oHostKeyAlgorithms=+ssh-rsa -oPubkeyAcceptedAlgorithms=+ssh-rsa /tmp/wazuh-
 
 scp -oHostKeyAlgorithms=+ssh-dss -oPubkeyAcceptedAlgorithms=+ssh-dss /tmp/wazuh-agent_4.7.0-1_amd64.deb msfadmin@10.10.10.50:/home/msfadmin/
 
+
+
+
+<remote>
+  <connection>secure</connection>
+  <port>1514</port>
+  <protocol>tcp</protocol>
+  <queue_size>131072</queue_size>
+</remote>
+
 <remote>
   <connection>syslog</connection>
   <port>514</port>
