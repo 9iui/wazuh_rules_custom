@@ -1,0 +1,15 @@
+[WinEventLog://Security]
+disabled = 0
+index = windows
+renderXml = true
+
+[WinEventLog://System]
+disabled = 0
+index = windows
+
+[WinEventLog://Directory Service]
+disabled = 0
+index = windows
+
+
+C:\Program Files\SplunkUniversalForwarder\etc\system\local\inputs.conf
