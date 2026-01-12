@@ -1,0 +1,10 @@
+sudo apt update
+sudo apt install -y xrdp xfce4 xfce4-goodies dbus-x11 xorgxrdp
+
+
+sudo systemctl enable --now xrdp
+
+
+echo "startxfce4" > ~/.xsession
+chmod +x ~/.xsession
+sudo systemctl restart xrdp
