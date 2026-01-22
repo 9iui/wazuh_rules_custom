@@ -1,0 +1,15 @@
+<group name="windows,account_management,privilege_escalation,">
+  <!-- User added to a security-enabled local group -->
+  <rule id="110200" level="12">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">4732</field>
+    <description>Account added to local Administrators group (possible privilege escalation)</description>
+  </rule>
+
+  <!-- User added to a security-enabled global group -->
+  <rule id="110201" level="13">
+    <if_group>windows</if_group>
+    <field name="win.system.eventID">4728</field>
+    <description>Account added to privileged domain group (possible privilege escalation)</description>
+  </rule>
+</group>
