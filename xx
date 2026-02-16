@@ -9,3 +9,6 @@ echo "startxfce4" > ~/.xsession
 chmod +x ~/.xsession
 sudo systemctl restart xrdp
 sudo wget https://archive.kali.org/archive-key.asc -O /usr/share/keyrings/kali-archive-keyring.asc
+
+sudo apt install kali-archive-keyring --reinstall
+
