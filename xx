@@ -20,3 +20,12 @@ PARAMETER num_ctx 32768
 EOF
 
 ollama create cyber-ornith-32k -f Modelfile
+
+
+
+cat > Modelfile <<'EOF'
+FROM hf.co/DuoNeural/Cyber-Ornith-1.5-9B-OBLITERATED-GGUF:Q6_K
+PARAMETER num_ctx 65536
+EOF
+
+ollama create cyber-ornith-64k -f Modelfile
